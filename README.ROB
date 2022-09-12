@@ -1,0 +1,35 @@
+12 September 2022
+
+I applied for a job which uses node.js
+
+They want me to do a timed quiz with node.js so I'm setting up a VM that can
+run node.js and lemme see output via web browser.
+
+Resource https://code.tutsplus.com/courses/easy-nodejs-development-environment-with-vagrant/lessons/the-vagrantfile
+
+Goal:
+
+Part I
+
+clone this
+vagrant up
+vagrant ssh
+install node.js
+run node.js
+see it in browser
+push all the things
+exit
+vagrant destroy
+
+Part II
+
+clone this
+vagrant up
+see something in browser
+vagrant ssh to edit it
+
+Part III
+
+clone this
+vagrant up
+take timed test
