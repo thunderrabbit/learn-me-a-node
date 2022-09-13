@@ -67,6 +67,7 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+  config.vm.provision :shell, path: "bootstrap-as-root.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-home-dir-as-vagrant.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-ssh-dir-as-vagrant.sh"
 end
