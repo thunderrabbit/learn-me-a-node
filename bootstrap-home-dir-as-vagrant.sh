@@ -46,7 +46,7 @@ echo
 cat >> /home/vagrant/.profile <<EOL
 export EDITOR=/usr/bin/emacs
 
-if [ ! -d ~/danananananananananananananananabatman ]; then
+if [ ! -d ~/WHATEVERWILLBENODEdirectory ]; then
     echo "Looks like we have not set anything up"
     echo "So let's start with connectivity:"
     echo
@@ -76,43 +76,15 @@ echo
 cat >> /home/vagrant/setup.sh <<EOL
 #!/bin/bash
 
-echo "if this doesn't work, need to copy ~/.ssh/id_rsa.pub to bitbucket"
-echo "set up local AB repos for static analysis"
-git clone git@bitbucket.org:sbstrm/danananananananananananananananabatman.git
-cd ~/danananananananananananananananabatman/
-echo "this checkout is a reminder that we might want work with something other than master here"
-echo "(not needed once master is updated)"
-git checkout 2022
-echo "Need to 'composer update' this project just once per OS update / PHP update"
-composer update
-echo "Composer installs --dev by default now!"
-composer install  # Allows running Phan and Rector.  This works now that we installed composer above
-cd ~
-
-echo "Use frontend-batman to allow cd f[TAB] to get in manually"
-git clone git@bitbucket.org:sbstrm/batman-frontend.git  frontend-batman
-cd ~/frontend-batman/
-echo "this checkout is a reminder that we might want work with something other than master here"
-echo "(not needed once master is updated)"
-git checkout 2022
-echo "Need to 'composer update' this project just once per OS update / PHP update"
-composer update
-echo "Composer installs --dev by default now!"
-composer install  # Allows running Phan and Rector.  This works now that we installed composer above
-cd ~
-
-git clone git@bitbucket.org:sbstrm-deploy/create-batman.co.jp-on-aws.git
-cd ~/create-batman.co.jp-on-aws/
-echo "this checkout is also a reminder that we might want work with something other than master here"
-echo "(not needed once master is updated)"
-git checkout 2022
+echo "if repos work, need to copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys"
+echo "This is where we need to set up node for playing around"
 cd ~
 EOL
 chmod 755 setup.sh
 
 cd /home/vagrant
 git add setup.sh
-git commit -m "Set up setup. Set up for deploys."
+git commit -m "Set up setup. Set up node.js"
 
 if [ ! -f ~/.bash_history ]; then
   echo ".bash_history does not exist"
