@@ -51,7 +51,7 @@ echo
 cat >> /home/vagrant/.profile <<EOL
 export EDITOR=/usr/bin/emacs
 
-if [ ! -d "$HOME/.nvm" ]; then
+if [ ! -d "$HOME/.nvm/alias" ]; then
     echo "Looks like we have not set anything up"
     echo
     echo "So I will set up nvm"
