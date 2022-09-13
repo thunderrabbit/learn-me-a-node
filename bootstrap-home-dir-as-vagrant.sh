@@ -25,6 +25,9 @@ git commit -m "Add .gitignore for emacs and node
 
 https://www.toptal.com/developers/gitignore/api/emacs%2Cnode"
 
+echo ".bash_history\n.ssh\n.nvm" >> .gitignore
+git add .gitignore
+git commit -m "Add .gitignore for other stuff"
 
 # configure git for user vagrant
 cat >> /home/vagrant/.bash_aliases <<EOL
@@ -76,15 +79,29 @@ echo
 cat >> /home/vagrant/setup.sh <<EOL
 #!/bin/bash
 
-echo "if repos work, need to copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys"
+echo "if repos don't work, need to copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys"
 echo "This is where we need to set up node for playing around"
+
+echo "HEY THIS MIGHT BE INSTALLING AN"
+echo "OLD VERSION OF nvm.  Check out latest at"
+echo https://github.com/nvm-sh/nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+echo "Assuming vagrant needs the alias defined for nvm:"
+source /home/vagrant/.bashrc
+echo "Install latest version of node"
+nvm install node
+echo "Make latest version default"
+nvm alias default node
+echo "Use our default (latest) version of node"
+nvm use default
+
 cd ~
 EOL
 chmod 755 setup.sh
 
 cd /home/vagrant
 git add setup.sh
-git commit -m "Set up setup. Set up node.js"
+git commit -m "Set up setup. Set up nvm"
 
 if [ ! -f ~/.bash_history ]; then
   echo ".bash_history does not exist"

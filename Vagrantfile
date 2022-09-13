@@ -69,5 +69,4 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision :shell, privileged: false, path: "bootstrap-home-dir-as-vagrant.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-ssh-dir-as-vagrant.sh"
-  config.vm.provision :shell, privileged: false, path: "bootstrap-node-as-vagrant.sh"
 end
