@@ -51,23 +51,33 @@ echo
 cat >> /home/vagrant/.profile <<EOL
 export EDITOR=/usr/bin/emacs
 
-if [ ! -d ~/WHATEVERWILLBENODEdirectory ]; then
+if [ ! -d "$HOME/.nvm" ]; then
     echo "Looks like we have not set anything up"
-    echo "So let's start with connectivity:"
+    echo
+    echo "So I will set up nvm"
+    echo
+    echo "HEY THIS MIGHT BE INSTALLING AN"
+    echo "OLD VERSION OF nvm.  Check out latest at"
+    echo https://github.com/nvm-sh/nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    echo "Assuming vagrant needs the alias defined for nvm:"
+    source /home/vagrant/.bashrc
+    echo "Install latest version of node"
+    nvm install node
+    echo "Make latest version default"
+    nvm alias default node
+
+    echo "Now let's add some connectivity, prn:"
     echo
     cat ~/.ssh/id_rsa.pub
 
     echo
     echo "If necessary, copy the above RSA public key to https://github.com/settings/keys"
-
-    # Run '. ./setup.sh' instead of just ./setup.sh to make the ENV variables stick.
-    echo "and then up-arrow a bit to run '. ./setup.sh'"
-
-    echo "After that, do something like this, depending on the project you will work on:"
-    echo
-    echo "cd ~/create-batman.co.jp-on-aws"
-    echo ". ./setup.sh"
 fi
+
+echo "Use our default (latest) version of node"
+nvm use default
+
 EOL
 
 cd /home/vagrant
@@ -82,21 +92,8 @@ cat >> /home/vagrant/setup.sh <<EOL
 #!/bin/bash
 
 echo "if repos don't work, need to copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys"
-echo "This is where we need to set up node for playing around"
-
-echo "HEY THIS MIGHT BE INSTALLING AN"
-echo "OLD VERSION OF nvm.  Check out latest at"
-echo https://github.com/nvm-sh/nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-echo "Assuming vagrant needs the alias defined for nvm:"
-source /home/vagrant/.bashrc
-echo "Install latest version of node"
-nvm install node
-echo "Make latest version default"
-nvm alias default node
-echo "Use our default (latest) version of node"
-nvm use default
-
+echo "This was where we need to set up node for playing around"
+echo "but it got moved to ~/.profile"
 cd ~
 EOL
 chmod 755 setup.sh
