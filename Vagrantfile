@@ -67,4 +67,10 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+      echo "HEY THIS MIGHT BE INSTALLING AN"
+      echo "OLD VERSION OF nvm.  Check out latest at"
+      echo https://github.com/nvm-sh/nvm
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+SHELL
 end
