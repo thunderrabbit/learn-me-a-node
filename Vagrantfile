@@ -67,18 +67,7 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "shell", privileged: false, inline: <<-SHELL
-      echo "HEY THIS MIGHT BE INSTALLING AN"
-      echo "OLD VERSION OF nvm.  Check out latest at"
-      echo https://github.com/nvm-sh/nvm
-      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-      echo "Assuming Vagrant needs the alias defined for nvm:"
-      source /home/vagrant/.bashrc
-      echo "Install latest version of node"
-      nvm install node
-      echo "Make latest version default"
-      nvm alias default node
-      echo "Use our default (latest) version of node"
-      nvm use default
-SHELL
+  config.vm.provision :shell, privileged: false, path: "bootstrap-home-dir-as-vagrant.sh"
+  config.vm.provision :shell, privileged: false, path: "bootstrap-ssh-dir-as-vagrant.sh"
+  config.vm.provision :shell, privileged: false, path: "bootstrap-node-as-vagrant.sh"
 end
