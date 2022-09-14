@@ -96,12 +96,12 @@ nvm use default
 EOL
 
 cd /home/vagrant
-git add .bashrc
-git commit -m "Set up nvm stuff in .bashrc"
-
-cd /home/vagrant
 git add .profile
 git commit -m "Tell .profile to tell us how to get started"
+
+cd /home/vagrant
+git add .bashrc
+git commit -m "Set up nvm stuff in .bashrc"
 
 if [ ! -d ~/nodeone ]; then
     mkdir nodeone
