@@ -27,11 +27,6 @@ automagically:
 
 ### next steps
 
-Install MongoDB
-eff around with it a bit
-
-### next next steps
-
 Install Postgres
 eff around with it a bit
 
