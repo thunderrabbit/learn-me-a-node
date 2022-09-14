@@ -104,6 +104,9 @@ server.listen(port, hostname, () => {
 EOL
 fi
 
+git add nodeone/
+git commit -m "Create minimal node.js app"
+
 echo "ABOUT TO SET UP vagrant setup-node-01.sh"
 echo
 
