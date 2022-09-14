@@ -89,7 +89,7 @@ if [ ! -d ~/nodeone ]; then
     cat >> /home/vagrant/nodeone/app.js <<EOL
 const http = require('http');
 
-const hostname = '127.0.0.1';
+const hostname = '0.0.0.0';
 const port = 4000;
 
 const server = http.createServer((req, res) => {
