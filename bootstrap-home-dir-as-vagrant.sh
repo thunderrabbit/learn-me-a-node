@@ -26,7 +26,9 @@ git commit -m "Add .gitignore for emacs and node
 https://www.toptal.com/developers/gitignore/api/emacs%2Cnode"
 
 echo ".bash_history" >> .gitignore
+echo ".cache/" >> .gitignore
 echo ".ssh/" >> .gitignore
+echo ".npm/" >> .gitignore
 echo ".nvm/" >> .gitignore
 git add .gitignore
 git commit -m "Add .gitignore for other stuff"
