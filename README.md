@@ -7,6 +7,8 @@ run node.js and lemme see output via web browser.
 
 Resource https://code.tutsplus.com/courses/easy-nodejs-development-environment-with-vagrant/lessons/the-vagrantfile
 
+Resource https://codeforgeek.com/node-js-tutorial-step-by-step/
+
 ### yeah, yeah, what do I do?
 
 1. clone this repo
