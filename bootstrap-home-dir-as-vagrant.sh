@@ -91,9 +91,9 @@ nvm use default
 
 EOL
 
+cd /home/vagrant
 git add .bashrc
 git commit -m "Set up nvm stuff in .bashrc"
-
 
 cd /home/vagrant
 git add .profile
