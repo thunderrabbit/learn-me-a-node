@@ -33,6 +33,9 @@ echo ".nvm/" >> .gitignore
 git add .gitignore
 git commit -m "Add .gitignore for other stuff"
 
+git add .bashrc
+git commit -m "Add pristine .bashrc"
+
 # configure git for user vagrant
 cat >> /home/vagrant/.bash_aliases <<EOL
 alias t='tmux new -A -s robone'
