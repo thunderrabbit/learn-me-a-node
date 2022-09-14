@@ -7,9 +7,7 @@ run node.js and lemme see output via web browser.
 
 Resource https://code.tutsplus.com/courses/easy-nodejs-development-environment-with-vagrant/lessons/the-vagrantfile
 
-Goal:
-
-Part I
+### yeah, yeah, what do I do?
 
 clone this repo
 vagrant up
@@ -26,14 +24,16 @@ automagically:
 
 View http://127.0.0.1:4000/homey in browswer
 View http://127.0.0.1:4000/home in browswer
-vagrant destroy
 
-Part II
+### next steps
 
-clone this
-vagrant up
-see something in browser
-vagrant ssh to edit it
+Install MongoDB
+eff around with it a bit
+
+### next next steps
+
+Install Postgres
+eff around with it a bit
 
 Part III
 
