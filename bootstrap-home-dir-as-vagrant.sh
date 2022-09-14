@@ -36,6 +36,10 @@ git commit -m "Add .gitignore for other stuff"
 git add .bashrc
 git commit -m "Add pristine .bashrc"
 
+cd /home/vagrant
+git add .bash_logout
+git commit -m "Add pristine .bash_logout"
+
 # configure git for user vagrant
 cat >> /home/vagrant/.bash_aliases <<EOL
 alias t='tmux new -A -s robone'
