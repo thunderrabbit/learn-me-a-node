@@ -104,28 +104,28 @@ server.listen(port, hostname, () => {
 EOL
 fi
 
-echo "ABOUT TO SET UP vagrant setup.sh"
+echo "ABOUT TO SET UP vagrant setup-node-01.sh"
 echo
 
-cat >> /home/vagrant/setup.sh <<EOL
+cat >> /home/vagrant/setup-node-01.sh <<EOL
 #!/bin/bash
 
 echo "if repos don't work, need to copy ~/.ssh/id_rsa.pub to https://github.com/settings/keys"
-echo "This was where we need to set up node for playing around"
-echo "but it got moved to ~/.profile"
-cd ~
+git clone git@github.com:thunderrabbit/node-bugful-bounty.git
+cd ~/node-bugful-bounty/
+node app.js
 EOL
-chmod 755 setup.sh
+chmod 755 setup-node-01.sh
 
 cd /home/vagrant
-git add setup.sh
-git commit -m "Set up setup. Set up nvm"
+git add setup-node-01.sh
+git commit -m "Set up setup. Set up first repo"
 
 if [ ! -f ~/.bash_history ]; then
   echo ".bash_history does not exist"
   echo "this must be first run"
   echo "So let's allow up-arrow to get this universe rolling"
   cat >> /home/vagrant/.bash_history <<EOL
-. ./setup.sh
+. ./setup-node-01.sh
 EOL
 fi

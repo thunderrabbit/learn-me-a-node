@@ -17,10 +17,13 @@ vagrant ssh
     `~/.profile` automagically installs nvm, sets up node
 copy ssh key to github
 vagrant@ubuntu-jammy:> . ./setup-node-01.sh
-vagrant@ubuntu-jammy:~$ cd node-bugful-bounty
 
-vagrant@ubuntu-jammy:~/node-bugful-bounty
-$ node app.js
+automagically:
+
+* clone repo
+* cd ~/node-bugful-bounty
+* node app.js
+
 View http://127.0.0.1:4000/homey in browswer
 View http://127.0.0.1:4000/home in browswer
 vagrant destroy
