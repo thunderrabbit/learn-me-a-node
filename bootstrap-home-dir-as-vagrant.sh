@@ -67,10 +67,16 @@ if [ ! -d "$HOME/.nvm/alias" ]; then
     echo "Make latest version default"
     nvm alias default node
 
-    echo "Now let's add some connectivity, prn:"
+    echo "if ~/nodeone exists, you can visit that directory"
+    echo "and execute"
+    echo
+    echo "       node app.js"
+    echo
+    echo "If you want to go to next step, let's add some connectivity, prn:"
     echo
     cat ~/.ssh/id_rsa.pub
-
+    echo
+    echo "then run ~/setup-node-01.sh or something"
     echo
     echo "If necessary, copy the above RSA public key to https://github.com/settings/keys"
 fi
