@@ -1,7 +1,7 @@
 # Edit the following to change the name of the database user that will be created:
 # Access this user via
 # sudo -i -u postgres psql
-# psql -h localhost -U gojilla
+# psql -h localhost -U godzilla
 # enter APP_DB_PASS when requested
 
 APP_DB_USER=godzilla
@@ -99,6 +99,7 @@ echo "client_encoding = utf8" >> "$PG_CONF"
 service postgresql restart
 
 
+# This EOF-block creates the user as defined above when Vagrant creates this VM
 cat << EOF | su - postgres -c psql
 -- Create the database user:
 CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';
@@ -111,20 +112,27 @@ CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER
                                   TEMPLATE=template0;
 EOF
 
+# This EOF-block creates a file that can be run after we log in as vagrant:
+# vagrant@ubuntu-focal:~$
+#     sudo -i -u postgres
+# then import the file as postgres:
+# postgres@ubuntu-focal:~$
+#     psql -h localhost -U godzilla -f psql_booter.sql
+# (Enter password visible in /var/lib/postgresql/password_for_[...])
+# Then log in to postgres as godzilla
+#     psql -h localhost -U godzilla
+# (Enter same password)
 cat >> /var/lib/postgresql/psql_booter.sql <<EOF
    CREATE TABLE profile (
      ID SERIAL PRIMARY KEY,
      name VARCHAR(30),
-     fycn VARCHAR(30),
      email VARCHAR(30)
    );
+EOF
 
-   CREATE TABLE fycn (
-     ID SERIAL PRIMARY KEY,
-     name VARCHAR(30),
-     fycn VARCHAR(30),
-     email VARCHAR(30)
-   );
+# insecurely store password until I can figure out how to do it right
+cat >> /var/lib/postgresql/password_for_$APP_DB_USER <<EOF
+$APP_DB_PASS
 EOF
 
 # Tag the provision time:
