@@ -1,5 +1,10 @@
 # Edit the following to change the name of the database user that will be created:
-APP_DB_USER=postgres
+# Access this user via
+# sudo -i -u postgres psql
+# psql -h localhost -U gojilla
+# enter APP_DB_PASS when requested
+
+APP_DB_USER=godzilla
 
 # Create a random password each time Vagrant is provisioned
 APP_DB_PASS=$(< /dev/urandom tr -dc "[:alnum:]" | head -c20)
