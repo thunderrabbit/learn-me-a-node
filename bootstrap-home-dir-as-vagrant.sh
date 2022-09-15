@@ -36,6 +36,10 @@ git commit -m "Add .gitignore for other stuff"
 git add .bashrc
 git commit -m "Add pristine .bashrc"
 
+cd /home/vagrant
+git add .bash_logout
+git commit -m "Add pristine .bash_logout"
+
 # configure git for user vagrant
 cat >> /home/vagrant/.bash_aliases <<EOL
 alias t='tmux new -A -s robone'
@@ -91,13 +95,13 @@ nvm use default
 
 EOL
 
-git add .bashrc
-git commit -m "Set up nvm stuff in .bashrc"
-
-
 cd /home/vagrant
 git add .profile
 git commit -m "Tell .profile to tell us how to get started"
+
+cd /home/vagrant
+git add .bashrc
+git commit -m "Set up nvm stuff in .bashrc"
 
 if [ ! -d ~/nodeone ]; then
     mkdir nodeone
@@ -145,5 +149,6 @@ if [ ! -f ~/.bash_history ]; then
   echo "So let's allow up-arrow to get this universe rolling"
   cat >> /home/vagrant/.bash_history <<EOL
 . ./setup-node-01.sh
+sudo -i -u postgres
 EOL
 fi

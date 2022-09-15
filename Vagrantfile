@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/jammy64"
+  config.vm.box = "ubuntu/focal64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -70,4 +70,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "bootstrap-as-root.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-home-dir-as-vagrant.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-ssh-dir-as-vagrant.sh"
+  config.vm.provision :shell, privileged: true, path: "bootstrap-postgresql-as-vagrant.sh"
 end
