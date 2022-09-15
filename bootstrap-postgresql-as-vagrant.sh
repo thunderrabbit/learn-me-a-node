@@ -91,7 +91,7 @@ echo "client_encoding = utf8" >> "$PG_CONF"
 # Restart so that all new config is loaded:
 service postgresql restart
 
-cat << EOF | su - postgres -c psql
+cat >> /home/vagrant/psql_booter <<EOF
 -- Create the database user:
 CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';
 
@@ -101,6 +101,19 @@ CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER
                                   LC_CTYPE='en_US.utf8'
                                   ENCODING='UTF8'
                                   TEMPLATE=template0;
+   CREATE TABLE profile (
+     ID SERIAL PRIMARY KEY,
+     name VARCHAR(30),
+     fycn VARCHAR(30),
+     email VARCHAR(30)
+   );
+
+   CREATE TABLE fycn (
+     ID SERIAL PRIMARY KEY,
+     name VARCHAR(30),
+     fycn VARCHAR(30),
+     email VARCHAR(30)
+   );
 EOF
 
 # Tag the provision time:
