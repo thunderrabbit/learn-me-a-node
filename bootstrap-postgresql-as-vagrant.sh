@@ -94,7 +94,7 @@ echo "client_encoding = utf8" >> "$PG_CONF"
 sudo service postgresql restart
 
 
-cat >> /home/vagrant/psql_booter <<EOF
+cat << EOF | su - postgres -c psql
 -- Create the database user:
 CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';
 
@@ -104,6 +104,9 @@ CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER
                                   LC_CTYPE='en_US.utf8'
                                   ENCODING='UTF8'
                                   TEMPLATE=template0;
+EOF
+
+cat >> /var/lib/postgresql/psql_booter.sql <<EOF
    CREATE TABLE profile (
      ID SERIAL PRIMARY KEY,
      name VARCHAR(30),

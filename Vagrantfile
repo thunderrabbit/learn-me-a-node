@@ -70,5 +70,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "bootstrap-as-root.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-home-dir-as-vagrant.sh"
   config.vm.provision :shell, privileged: false, path: "bootstrap-ssh-dir-as-vagrant.sh"
-  config.vm.provision :shell, privileged: false, path: "bootstrap-postgresql-as-vagrant.sh"
+  config.vm.provision :shell, privileged: true, path: "bootstrap-postgresql-as-vagrant.sh"
 end
