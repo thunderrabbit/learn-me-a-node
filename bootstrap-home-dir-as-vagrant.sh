@@ -149,5 +149,6 @@ if [ ! -f ~/.bash_history ]; then
   echo "So let's allow up-arrow to get this universe rolling"
   cat >> /home/vagrant/.bash_history <<EOL
 . ./setup-node-01.sh
+sudo -i -u postgres
 EOL
 fi

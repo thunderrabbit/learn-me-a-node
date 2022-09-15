@@ -135,6 +135,15 @@ cat >> /var/lib/postgresql/password_for_$APP_DB_USER <<EOF
 $APP_DB_PASS
 EOF
 
+if [ ! -f "/var/lib/postgresql/.bash_history" ]
+then
+  cat >> /var/lib/postgresql/.bash_history <<EOF
+cat /var/lib/postgresql/password_for_$APP_DB_USER
+psql -h localhost -U $APP_DB_USER -f psql_booter.sql
+psql -h localhost -U $APP_DB_USER
+EOF
+fi
+
 # Tag the provision time:
 date > "$PROVISIONED_ON"
 
