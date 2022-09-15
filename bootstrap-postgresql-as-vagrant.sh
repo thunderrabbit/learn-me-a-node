@@ -1,7 +1,7 @@
 # Edit the following to change the name of the database user that will be created:
 APP_DB_USER=postgres
 
-# by doing this, will it create a random password each time Vagrant is provisioned
+# Create a random password each time Vagrant is provisioned
 APP_DB_PASS=$(< /dev/urandom tr -dc "[:alnum:]" | head -c20)
 
 # Edit the following to change the name of the database that is created (defaults to the user name)
